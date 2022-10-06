@@ -16,9 +16,16 @@ const val channelName = "com.example.firebasepushnotifications"
 
 class FirebaseMessagingService : FirebaseMessagingService() {
 
+    override fun onNewToken(token: String) {
+        super.onNewToken(token)
+    }
+
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        if(remoteMessage.notification != null) {
-            generateNotification(remoteMessage.notification!!.title!!, remoteMessage.notification!!.body!!)
+        if (remoteMessage.notification != null) {
+            generateNotification(
+                remoteMessage.notification!!.title!!,
+                remoteMessage.notification!!.body!!
+            )
         }
     }
 
